@@ -1,0 +1,20 @@
+{
+    "name": "My Auto-Updated NOOP Repo",
+    "identifier": "com.example.auto-noop",
+    "apps": [
+        {
+            "name": "NOOP",
+            "bundleIdentifier": "com.noopapp.noop",
+            "developerName": "NoopApp",
+            "versions": [
+                {
+                    "version": "0.0.0",
+                    "date": "1970-01-01",
+                    "downloadURL": "https://placeholder.url",
+                    "localizedDescription": "Automatically updated.",
+                    "size": 0
+                }
+            ]
+        }
+    ]
+}
