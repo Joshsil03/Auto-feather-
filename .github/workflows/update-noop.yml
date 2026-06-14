@@ -1,0 +1,36 @@
+name: Auto-Update NOOP Release
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Fetch latest release and update JSON
+        run: |
+          RELEASE_DATA=$(curl -s https://api.github.com/repos/NoopApp/noop/releases/latest)
+          
+          VERSION=$(echo "$RELEASE_DATA" | jq -r '.tag_name' | sed 's/v//')
+          DOWNLOAD_URL=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(.name | contains("ios")) | .browser_download_url')
+          DATE=$(echo "$RELEASE_DATA" | jq -r '.published_at' | cut -d'T' -f1)
+          SIZE=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(.name | contains("ios")) | .size')
+          
+          jq --arg version "$VERSION" \
+             --arg url "$DOWNLOAD_URL" \
+             --arg date "$DATE" \
+             --arg size "$SIZE" \
+             '.apps[0].versions[0].version = $version |
+              .apps[0].versions[0].downloadURL = $url |
+              .apps[0].versions[0].date = $date |
+              .apps[0].versions[0].size = ($size | tonumber)' \
+             repo.feather.json > repo.temp && mv repo.temp repo.feather.json
+          
+          git config user.name "github-actions[bot]"
+          git add repo.feather.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update NOOP to version $VERSION"
+          git push
