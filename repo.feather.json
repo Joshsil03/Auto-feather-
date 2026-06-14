@@ -1,6 +1,6 @@
 {
-  "name": "My Repo",
-  "identifier": "com.joshsil03.autofeather",
+  "name": "Auto NOOP",
+  "identifier": "com.joshsil03.noop",
   "apps": [
     {
       "name": "NOOP",
@@ -13,7 +13,7 @@
           "date": "2024-07-01",
           "downloadURL": "https://github.com/NoopApp/noop/releases/download/v2.18.4/NOOP-v2.18.4-ios.ipa",
           "size": 0,
-          "localizedDescription": "NOOP app"
+          "localizedDescription": "NOOP - No operations app"
         }
       ]
     }
