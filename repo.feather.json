@@ -9,10 +9,10 @@
       "iconURL": "https://raw.githubusercontent.com/NoopApp/noop/main/assets/icon.png",
       "versions": [
         {
-          "version": "4.2.13",
-          "date": "2026-06-16",
-          "downloadURL": "https://github.com/NoopApp/noop/releases/download/v4.2.13/NOOP-v4.2.13-ios.ipa",
-          "size": 8069257,
+          "version": "4.5.1",
+          "date": "2026-06-17",
+          "downloadURL": "https://github.com/NoopApp/noop/releases/download/v4.5.1/NOOP-v4.5.1-ios.ipa",
+          "size": 8136100,
           "localizedDescription": "NOOP - No operations app"
         }
       ]
